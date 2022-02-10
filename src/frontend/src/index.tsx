@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 // import * as Sentry from '@sentry/browser'
 // import ReactGA from 'react-ga'
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
+// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 import { App } from './app/App.controller'
 import reportWebVitals from './reportWebVitals'
 import { unregister } from './serviceWorker'
