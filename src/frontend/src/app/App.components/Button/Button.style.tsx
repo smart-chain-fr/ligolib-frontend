@@ -13,8 +13,8 @@ export const ButtonStyled = styled.button<{ appearance: string }>`
         elementTextColor = textColor
         break
       case 'secondary':
-        elementBackgroundColor = textColor
-        elementTextColor = backgroundColor
+        elementBackgroundColor = backgroundColor
+        elementTextColor = textColor
         break
       case 'tertiary':
         elementBackgroundColor = backgroundColor
@@ -40,7 +40,7 @@ export const ButtonStyled = styled.button<{ appearance: string }>`
   border: 2px solid rgba(255, 255, 255, 0.4);
   box-sizing: border-box;
   box-shadow: -10px -10px 20px rgba(8, 21, 45, 0.4), 5px 5px 15px rgba(5, 12, 27, 0.6);
-  border-radius: 40px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 14px;
   display: grid;

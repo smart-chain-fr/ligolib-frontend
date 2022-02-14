@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { HomeCard, HomeCardBottom, HomeCardComing, HomeCardTop, HomeGrid, HomeStyled } from './Home.style'
+import { HomeCard, HomeCardBottom, HomeCardComing, HomeCardMiddle, HomeCardTop, HomeGrid, HomeStyled } from './Home.style'
 
 export const HomeView = () => {
   return (
@@ -13,9 +13,10 @@ export const HomeView = () => {
             </svg>
             <h2>Multisig</h2>
           </HomeCardTop>
+          <HomeCardMiddle>The Multisig contract requires multiple people's signature for a transaction to be executed.</HomeCardMiddle>
           <HomeCardBottom>
             <a href="https://github.com/smart-chain-fr/Ligolib/tree/main/multisig" target="_blank" rel="noreferrer">
-              Source Code
+              Source
             </a>
             <Link to="/multisig">Demo</Link>
           </HomeCardBottom>

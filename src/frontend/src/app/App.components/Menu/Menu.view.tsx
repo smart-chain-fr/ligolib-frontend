@@ -26,14 +26,20 @@ export const MenuView = ({ loading, accountPkh, handleNewConnect, wallet, ready,
         </Link>
         <div />
         <MenuNav>
-          <div>
-            {accountPkh ? `${accountPkh.slice(0, 7)}...${accountPkh.slice(accountPkh.length - 4, accountPkh.length)}` : 'Not connected'}
-          </div>
+          <div></div>
         </MenuNav>
         <div />
 
         {wallet ? (
-          <div>{ready ? <Button icon="check">Connected</Button> : <Button clickCallback={handleConnect}>Connect wallet</Button>}</div>
+          <div>
+            {ready ? (
+              <Button appearance="secondary" icon="check">
+                {accountPkh ? `${accountPkh.slice(0, 7)}...${accountPkh.slice(accountPkh.length - 4, accountPkh.length)}` : 'Not connected'}
+              </Button>
+            ) : (
+              <Button clickCallback={handleConnect}>Connect wallet</Button>
+            )}
+          </div>
         ) : (
           <Button clickCallback={() => window.open('https://templewallet.com/', '_blank')!.focus()}>Install wallet</Button>
         )}

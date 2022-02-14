@@ -29,7 +29,7 @@ export const MenuBar = styled.div<{ showing: boolean }>`
   border: 2px solid ${backgroundColor};
   box-sizing: border-box;
   box-shadow: -10px -10px 20px rgba(8, 21, 45, 0.4), 5px 5px 15px rgba(5, 12, 27, 0.6);
-  border-radius: 40px;
+  border-radius: 10px;
 
   > a {
     margin: 13px 0;
@@ -53,7 +53,6 @@ export const MenuBar = styled.div<{ showing: boolean }>`
 export const MenuLogo = styled.img`
   height: 40px;
   margin: 5px 0px 5px 10px;
-  width: 215px;
   display: block;
 `
 

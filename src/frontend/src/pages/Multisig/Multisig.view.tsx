@@ -15,6 +15,7 @@ export const MultisigView = ({ tempTxCallback, loading }: MultisigViewProps) => 
 
   return (
     <MultisigStyled>
+      <h1>Under development!</h1>
       <Input
         icon="user"
         name="username"
