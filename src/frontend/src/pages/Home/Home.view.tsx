@@ -49,7 +49,13 @@ export const HomeView = () => {
             </svg>
             <h2>Shifumi</h2>
           </HomeCardTop>
-          <HomeCardComing>Coming soon</HomeCardComing>
+          <HomeCardMiddle>The Shifumi contract allows people to play SHIFUMI (stone paper , scisors).</HomeCardMiddle>
+          <HomeCardBottom>
+            <a href="https://github.com/smart-chain-fr/ligolib/tree/main/shifumi" target="_blank" rel="noreferrer">
+              Source
+            </a>
+            <Link to="/shifumi">Play</Link>
+          </HomeCardBottom>
         </HomeCard>
       </HomeGrid>
     </HomeStyled>
