@@ -9,6 +9,7 @@ export const Shifumi = () => {
   const dispatch = useDispatch()
   const loading = useSelector((state: State) => state.loading)
   // const { wallet, ready, tezos, accountPkh } = useSelector((state: State) => state.wallet)
+  //dispatch(getShifumiStorage())
 
   const tempTxCallback = (amount: number) => {
     dispatch(tempTx(amount))

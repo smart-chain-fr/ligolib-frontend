@@ -1,6 +1,7 @@
 import { TempleWallet } from '@temple-wallet/dapp'
 import { Home } from 'pages/Home/Home.controller'
 import { Multisig } from 'pages/Multisig/Multisig.controller'
+import { Shifumi } from 'pages/Shifumi/Shifumi.controller'
 import { useEffect } from 'react'
 import { Provider, useDispatch } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -30,6 +31,7 @@ export const AppContainer = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/multisig" element={<Multisig />} />
+          <Route path="/shifumi" element={<Shifumi />} />
         </Routes>
       </AppView>
       <Footer />

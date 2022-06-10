@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import { loading, LoadingState } from './loading'
 import { multisig, MultisigState } from './multisig'
+import { shifumi, ShifumiState } from './shifumi'
 import { popup, PopupState } from './popup'
 import { progressBar, ProgressBarState } from './progressBar'
 import { toaster, ToasterState } from './toaster'
@@ -13,6 +14,7 @@ export const reducers = combineReducers({
   toaster,
   popup,
   multisig,
+  shifumi,
   wallet,
 })
 
@@ -22,5 +24,6 @@ export interface State {
   toaster: ToasterState
   popup: PopupState
   multisig: MultisigState
+  shifumi: ShifumiState
   wallet: WalletState
 }

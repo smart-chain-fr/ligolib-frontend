@@ -13,13 +13,13 @@ export const getShifumiStorage = (accountPkh?: string) => async (dispatch: any, 
   }
 
   const contract = accountPkh
-    ? await state.wallet.tezos?.wallet.at('<INSERT_CONTRACT_ADDRESS>')
+    ? await state.wallet.tezos?.wallet.at('KT1N3FyTF4XVTwz4przoLeMdtQCGpL5gzudB')
     : await new TezosToolkit((process.env.REACT_APP_RPC_PROVIDER as any) || 'https://ithacanet.smartpy.io').contract.at(
-      '<INSERT_CONTRACT_ADDRESS>',
+      'KT1N3FyTF4XVTwz4przoLeMdtQCGpL5gzudB',
     )
 
   const shifumiStorage = await (contract as any).storage()
-
+  console.log(shifumiStorage)
   dispatch({
     type: GET_SHIFUMI_STORAGE,
     shifumiStorage,
@@ -48,7 +48,8 @@ export const tempTx = (amount: number) => async (dispatch: any, getState: any) =
   }
 
   try {
-    const contract = await state.wallet.tezos?.wallet.at('<INSERT_CONTRACT_ADDRESS>')
+    console.log('STARRRRRRT')
+    const contract = await state.wallet.tezos?.wallet.at('KT1N3FyTF4XVTwz4przoLeMdtQCGpL5gzudB')
     console.log('contract', contract)
     const transaction = await contract?.methods.tempTx(amount * 1000000).send()
     console.log('transaction', transaction)
