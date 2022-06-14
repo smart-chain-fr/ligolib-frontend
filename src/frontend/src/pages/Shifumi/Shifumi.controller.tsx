@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { State } from 'reducers'
-import { tempTx } from './Shifumi.actions'
+import { tempTx, createSession } from './Shifumi.actions'
 import { ShifumiView } from './Shifumi.view'
 
 export const Shifumi = () => {
@@ -15,5 +15,14 @@ export const Shifumi = () => {
     dispatch(tempTx(amount))
   }
 
-  return <ShifumiView tempTxCallback={tempTxCallback} loading={loading} />
+  const createSessionCallback = (sessionId: number, sessionPlayers: string, sessionNumberOfRounds: number) => {
+    var players: Array<string> = []
+    const addresses = sessionPlayers.split(",")
+    addresses.forEach(elt => { players.push(elt) })
+    console.log("createSession", players, sessionNumberOfRounds)
+    dispatch(createSession(players, sessionNumberOfRounds))
+
+  }
+
+  return <ShifumiView tempTxCallback={tempTxCallback} createSessionCallback={createSessionCallback} loading={loading} />
 }

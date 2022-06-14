@@ -48,7 +48,6 @@ export const tempTx = (amount: number) => async (dispatch: any, getState: any) =
   }
 
   try {
-    console.log('STARRRRRRT')
     const contract = await state.wallet.tezos?.wallet.at('KT1N3FyTF4XVTwz4przoLeMdtQCGpL5gzudB')
     console.log('contract', contract)
     const transaction = await contract?.methods.tempTx(amount * 1000000).send()
@@ -77,4 +76,63 @@ export const tempTx = (amount: number) => async (dispatch: any, getState: any) =
       error,
     })
   }
+}
+
+export const CREATE_SESSION_REQUEST = 'CREATE_SESSION_REQUEST'
+export const CREATE_SESSION_RESULT = 'CREATE_SESSION_RESULT'
+export const CREATE_SESSION_ERROR = 'CREATE_SESSION_ERROR'
+export const createSession = (sessionPlayers: Array<string>, sessionNumberOfRounds: number) => async (dispatch: any, getState: any) => {
+  const state: State = getState()
+
+  console.log('storage', state.shifumi.shifumiStorage)
+
+  if (!state.wallet.ready) {
+    dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
+    return
+  }
+
+  if (!(sessionPlayers.length == 2)) {
+    dispatch(showToaster(ERROR, 'Incorrect players', 'Please enter only two player addresses'))
+    return
+  }
+  if (!(sessionNumberOfRounds > 0)) {
+    dispatch(showToaster(ERROR, 'Incorrect rounds', 'Please enter a number of rounds greater than zero'))
+    return
+  }
+  if (state.loading) {
+    dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
+    return
+  }
+
+  try {
+    const contract = await state.wallet.tezos?.wallet.at('KT1N3FyTF4XVTwz4przoLeMdtQCGpL5gzudB')
+    console.log('contract', contract)
+    const transaction = await contract?.methods.createSession(sessionPlayers, sessionNumberOfRounds).send()
+    console.log('transaction', transaction)
+
+    dispatch({
+      type: CREATE_SESSION_REQUEST,
+      sessionNumberOfRounds,
+      sessionPlayers,
+    })
+    dispatch(showToaster(INFO, 'Processing...', 'Please wait 30s'))
+
+    const done = await transaction?.confirmation()
+    console.log('done', done)
+    dispatch(showToaster(SUCCESS, 'Transation done', 'All good :)'))
+
+    dispatch({
+      type: CREATE_SESSION_RESULT,
+    })
+
+    dispatch(getShifumiStorage(state.wallet.accountPkh))
+  } catch (error: any) {
+    console.error(error)
+    dispatch(showToaster(ERROR, 'Error', error.message))
+    dispatch({
+      type: CREATE_SESSION_ERROR,
+      error,
+    })
+  }
+
 }
