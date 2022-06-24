@@ -1,0 +1,17 @@
+# Commands to start on workspace startup
+tasks:
+  - name: open terminial
+  - name: install & run dev server
+    openMode: split-right
+    init: yarn install
+    command: yarn start
+
+# Pre-install some extensions
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+
+# Ports to expose on workspace startup
+ports:
+  - port: 3000
+    onOpen: open-browser
